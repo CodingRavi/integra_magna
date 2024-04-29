@@ -1,17 +1,17 @@
 
 // Navebar Add
 $(function(){
-  $("#nav-placeholder").load("./Header.html");
+  $("#nav-placeholder").load("Header.html");
 });
 
   // Footer
 $(function(){
-  $("#Footer_placeholder").load("./Footer.html");
+  $("#Footer_placeholder").load("Footer.html");
 });
 
  // Footer
  $(function(){
-  $("#testinomial_placeholder").load("./Testimonial.html");
+  $("#testinomial_placeholder").load("Testimonial.html");
 });
 
 // hero js
