@@ -1,11 +1,11 @@
   // Footer
   $(function(){
-    $("#Footer_placeholder").load("/Footer.html");
+    $("#Footer_placeholder").load("https://codingravi.github.io/integra_magna/Footer.html");
   });
   
   // Navebar Add
   $(function(){
-    $("#nav-placeholder").load("/Header.html");
+    $("#nav-placeholder").load("https://codingravi.github.io/integra_magna/Header.html");
   });
 
 var formUpText = document.getElementsByClassName("footer-upperline");
