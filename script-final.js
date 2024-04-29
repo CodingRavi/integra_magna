@@ -1,17 +1,17 @@
 
 // Navebar Add
 $(function(){
-  $("#nav-placeholder").load("Header.html");
+  $("#nav-placeholder").load("https://codingravi.github.io/integra_magna/Header.html");
 });
 
   // Footer
 $(function(){
-  $("#Footer_placeholder").load("Footer.html");
+  $("#Footer_placeholder").load("https://codingravi.github.io/integra_magna/Footer.html");
 });
 
  // Footer
  $(function(){
-  $("#testinomial_placeholder").load("Testimonial.html");
+  $("#testinomial_placeholder").load("https://codingravi.github.io/integra_magna/Testimonial.html");
 });
 
 // hero js
