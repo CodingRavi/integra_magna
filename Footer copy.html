@@ -1,0 +1,685 @@
+
+<link rel="stylesheet" href="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/font-size.css"/>
+<!--Website Footer-->
+ <style>
+    :root {
+    --fs-164: clamp(2.81rem, 7.44vi + 1.33rem, 10.25rem);
+    --fs-64: clamp(1.88rem, 2.13vi + 1.45rem, 4rem);
+    --fs-36: clamp(1.25rem, 1vi + 1.05rem, 2.25rem);
+    --fs-32: clamp(1rem, 1vi + 0.8rem, 2rem);
+    --fs-24: clamp(1rem, 0.5vi + 0.9rem, 1.5rem);
+    --fs-20: clamp(1rem, 0.25vi + 0.95rem, 1.25rem);
+    --fs-16: clamp(0.75rem, 0.25vi + 0.7rem, 1rem);
+  }
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #scroll-animate {
+        overflow: hidden;
+    }
+
+    #scroll-animate-main {
+        width: 100%;
+        left: 0;
+    }
+
+    #heightPage,
+    #heightScroll {
+        width: 0.47vw;
+        top: 0;
+        position: absolute;
+        z-index: 99;
+    }
+
+    #heightPage {
+        left: 0;
+    }
+
+    #heightScroll {
+        right: 0;
+    }
+
+    .wrapper-parallax {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Footer Style*/
+    .form-container-section {
+        height: 100vh;
+        padding: 0px 5.4vw;
+        border-top: solid 1px #888888;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        font-family: Campton;
+        font-weight: 500;
+        z-index: 2;
+        position: relative;
+    }
+
+
+    .footer-upperline {
+        padding-bottom: 2.8vw;
+    }
+
+    .footer-upperline>p {
+        font-family: Campton;
+        font-weight: 500;
+        font-size: var(--fluid-24);
+    }
+
+    #footer_container {
+        width: 100%;
+        position: relative;
+
+    }
+
+    .footer {
+        font-family: Campton;
+
+        text-align: left;
+        position: relative;
+    }
+
+    ::placeholder {
+        color: #888888cc;
+    }
+
+    ::-ms-input-placeholder {
+        color: #888888cc;
+    }
+
+    .footer_p {
+        color: #000;
+        font-size: var(--fluid-64);
+        
+    }
+
+    .footer_p span>input {
+        color: #757575;
+        font-family: Campton;
+        font-size: var(--fluid-36);
+        font-weight: 500;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1.56px solid black;
+        text-align: center;
+        outline: none;
+        cursor: pointer;
+        text-align: start;
+        padding-top: 0.47vw;
+    }
+
+    .footer_p span>textarea {
+        width: 100%;
+        min-height: 50px;
+        max-height: 100px;
+        color: #757575;
+        font-size: var(--fluid-36);
+        font-family: Campton;
+        font-weight: 500;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1.56px solid black;
+        text-align: left;
+        outline: none;
+        cursor: pointer;
+        resize: none;
+        padding-top: 2.35vw;
+    }
+
+    
+
+    .footer_bt {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .socialmedia_icon {
+        color: #000;
+        font-size: var(--fluid-36);
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-top: 3.29vw;
+    }
+
+    textarea::-webkit-input-placeholder {
+        position: relative;
+        bottom: 10px;
+        left: 0px;
+    }
+
+    .socialmedia_icon p span {
+        padding-right: 2.8vw;
+    }
+    .socialmedia_icon p span a {
+        text-decoration: none;
+        cursor: pointer;
+        color: #000 !important;
+    }
+
+
+    .footer_bt button {
+        border-radius: 12px;
+        border: 1px solid #000;
+        background: #000;
+        padding: 1.13vw;
+        color: #fff;
+        font-size: var(--fluid-36);
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        cursor: pointer;
+    }
+
+    .alert-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        width: 80vw;
+        height: 50vh;
+        border-radius: 10px;
+        color: rgba(136, 136, 136, 0.8);
+        font-size: 1.7vw;
+        font-family: Campton;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        padding: .47vw;
+        position: relative;
+    }
+
+    .close-btn {
+        cursor: pointer;
+        position: absolute;
+
+        top: .47vw;
+        right: .47vw;
+    }
+
+    .gmail_box {
+        width: 37.6vw;
+    }
+
+    .Submit_form_text {
+        width: 50vw;
+        position: absolute;
+        top: 50%;
+
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #Submit_form_socialmedia_Icon {
+        position: absolute;
+        left: 0.94vw;
+        bottom: 0.94vw;
+    }
+
+    /* Responsive styles for screen size 320px - 640px */
+    @media screen and (min-width: 320px) and (max-width: 640px) {
+        .footer-upperline {
+            padding-bottom: 4.84vw;
+            padding-top: 6.6vw;
+        }
+
+        .form-container-section {
+            padding: 0px 4.4vw;
+            height: auto;
+            display: flex;
+            gap: 6.6vw;
+        }
+
+        #footer_container {
+            padding-bottom: 6.6vw;
+        }
+
+        
+
+        
+        .footer_p {
+            color: #000;
+            font-size: 6.6vw;
+        }
+
+        .footer_p span>input {
+            width: 100%;
+        }
+
+        .footer_p span>textarea {
+            height: 70px;
+            padding-top: 4.62vw;
+        }
+
+        .socialmedia_icon {
+        }
+
+        .footer_bt button {
+            padding: 2.2vw 7.7vw;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .socialmedia_icon p span {
+            padding-right: 1.54vw;
+        }
+
+        #nameuser {
+            width: 250px;
+        }
+    }
+
+   /* footer style */
+   .footer_container {
+    width: 100%;
+    height: 100vh;
+    /* background-color: red; */
+    position: relative;
+    overflow: hidden ;
+    background-color: black;
+font-family: Campton;
+
+
+}
+
+.integra_magna_img {
+    width: 100vw;
+   
+
+}
+.footer_image_text_mobile{
+    display: none;
+}
+
+.integra_magna_img img {
+    width: 100%;
+}
+
+.links_footer {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    left: 115px;
+    bottom: 115px;
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style: none;
+  
+}
+.links_footer a{
+    color: white;
+    text-decoration: none;
+    font-size: var(--fs-32);
+}
+.copyright{
+    
+    position: absolute;
+    bottom: 115px;
+    right: 115px;
+
+}
+.copyright p{
+    color: white;
+    font-size: var(--fs-20);
+
+}
+
+
+.star_yellow{
+width: 200px;
+height: 200px;
+background: url('https://github.com/CodingRavi/images/assets/86877501/f45fb444-9e45-447f-8ffe-089c38cc6be7');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+position: absolute;
+top: 115px;
+left: 115px;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 30px;
+}
+.star_yellow h2{
+font-size: var(--fs-16);
+text-align: center;
+
+}
+.shape2_yellow{
+    width: 200px;
+height: 200px;
+background: url('https://github.com/CodingRavi/images/assets/86877501/262bc809-0905-4622-822b-413c460a73a3');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+position: absolute;
+right: 115px;
+bottom: 215px;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 30px;
+}
+.shape2_yellow h2{
+    font-size: var(--fs-16);
+    text-align: center;
+    
+    }
+
+    .image_changing_footer{
+        width: 110px;
+        height: 110px;
+        border-radius: 8px;
+        /* background-color: red; */
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .image_changing_footer img{
+
+        height: 110px;
+
+        /* object-fit: cover; */
+        background-position: center;
+        background-size: contain;
+        /* height: 100%; */
+
+    }
+
+
+    @media screen and (min-width: 320px) and (max-width: 960px){
+        .star_yellow{
+            display: none;
+        }
+        .shape2_yellow {
+            display: none;
+        }
+        .image_changing_footer {
+            right: 30px;
+            top: 40%;
+            left: auto;
+        }
+        .footer_image_text_mobile{
+            display: inline;
+        }
+        .footer_image_text_laptop{
+            display: none;
+        }
+        .image_changing_footer{
+            width: 110px;
+            height: 110px;
+        }
+        .image_changing_footer img{
+            height: 150px;
+        }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 640px){
+        .links_footer{
+            height: 150px;
+        }
+       
+
+        
+      
+            
+                .links_footer{
+                    width: 200px;
+                    height: 200px;
+                    left: 20px;
+                    bottom: 115px;
+                }
+                .copyright p{
+                    
+                    white-space: nowrap;
+                
+                }
+
+                .copyright{
+                    bottom: 30px;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 320px;
+                    text-align: center;
+
+                }
+    }
+    @media screen and (min-width: 640px) and (max-width: 1200px){
+       
+       
+      
+        
+        
+                .links_footer{
+                    width: 200px;
+                    height: 200px;
+                    left: 60px;
+                    bottom: 200px;
+                }
+                .copyright p{
+                    
+                    white-space: nowrap;
+                
+                }
+
+                .copyright{
+                    bottom: 30px;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 200px;
+
+                }
+    }
+
+    
+
+    
+</style>
+
+
+
+
+<!-- partial:index.partial.html -->
+<div id="scroll-animate">
+    <div id="scroll-animate-main">
+        <div class="wrapper-parallax">
+            <section class="form-container-section">
+                <div class="footer-form-section">
+                    <div class="footer-upperline">
+                        <p>
+                            Drop us a line or come grab a coffee, It’s on us. and let's design
+                            the extraordinary together
+                        </p>
+                    </div>
+                    <div id="footer_container">
+                        <div class="footer">
+                            <form id="my_form">
+                                <p class="footer_p">
+                                    Hey, I’m
+                                    <span><input type="text" placeholder="your name" id="nameuser" required="false"
+                                            autocomplete="off" /></span>
+                                    Let's grab a virtual coffee and chat things out. Reach me back
+                                    at
+                                    <span><input type="email" placeholder="your email address" id="gmaiiluser"
+                                            oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" name="email"
+                                            type="email" required="required" autocomplete="off"
+                                            class="gmail_box" /></span>Here’s what I’m thinking:
+                                    <span>
+                                        <textarea placeholder="Spill the ink of your mind right here..."
+                                            id="textuser" required="false" autocomplete="off" rows="1"></textarea>
+                                    </span>
+                                </p>
+                                <div class="footer_bt">
+                                    <div class="socialmedia_icon">
+                                        <p>
+                                            <span><a href="https://www.instagram.com/integra.magna/"
+                                                    target="_blank">In</a></span>
+                                            <span><a href="https://www.facebook.com/Integra.Magna/"
+                                                    target="_blank">Fb</a></span>
+                                            <span><a href="https://twitter.com/Integra_Magna/"
+                                                    target="_blank">X</a></span>
+                                            <span><a href="https://www.behance.net/integra_magna/"
+                                                    target="_blank">Be</a></span>
+                                        </p>
+                                    </div>
+                                    <button type="submit">Submit</button>
+                                </div>
+                            </form>
+                            <div id="alertBox" class="alert-box">
+                                <span class="close-btn" onclick="closeAlert()">&times;</span>
+                                <div class="Submit_form_text">
+                                    Cheers for dropping us a line! We're brewing up a coffee
+                                    chat and will invite you shortly. Stay caffeinated!
+                                </div>
+                                <div class="socialmedia_icon" id="Submit_form_socialmedia_Icon">
+                                    <p>
+                                        <span><a href="https://www.instagram.com/integra.magna/"
+                                                target="_blank">In</a></span>
+                                        <span><a href="https://www.facebook.com/Integra.Magna/"
+                                                target="_blank">Fb</a></span>
+                                        <span><a href="https://twitter.com/Integra_Magna/"
+                                                target="_blank">X</a></span>
+                                        <span><a href="https://www.behance.net/integra_magna/"
+                                                target="_blank">Be</a></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="footer_container">
+              <div class="integra_magna_img">
+                <img
+                  src="https://github.com/CodingRavi/images/assets/86877501/0e9a971b-8efd-4f92-9067-a93a1980c06a"
+                  alt=""
+                  class="footer_image_text_laptop"
+                />
+                <img
+                  src="https://github.com/CodingRavi/images/assets/86877501/ead8c309-88c8-42f8-bb1e-a688880b464a"
+                  alt=""
+                  class="footer_image_text_mobile"
+                />
+              </div>
+              <div class="links_footer">
+                        <li ><a href="/work/Work.html">Work</a></li>
+                        <li ><a href="/Services/services.html">Services</a></li>
+                        <li ><a href="https://integramagna.com/thinking">Thinking</a></li>
+                        <li ><a href="Carear/career.html">Career</a></li>
+                        <li ><a href="About/About.html">About</a></li>
+                        <li ><a href="/Contact/contact.htm">Contact</a></li>
+              </div>
+              <div class="copyright">
+                <p>Copyright © 2024 Integra Magna</p>
+              </div>
+              <div class="star_yellow">
+                <h2>
+                  "Boat's campaign soared with 3,000+ reach and over 100,000
+                  engagements!"
+                </h2>
+              </div>
+              <div class="shape2_yellow">
+                <h2>
+                  "Boat's campaign soared with 3,000+ reach and over 100,000
+                  engagements!"
+                </h2>
+              </div>
+              <div class="image_changing_footer">
+                <img
+                  src="https://static.tildacdn.net/tild6336-3332-4230-b733-613966396438/Team.gif"
+                  
+                  alt=""
+                  class="image-flick"
+                />
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- partial -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    var formUpText = document.getElementsByClassName("footer-upperline");
+    function showAlert() {
+        
+        myform.reset();
+        document.getElementById("alertBox").style.display = "block";
+        myform.style.display = "none";
+        formUpText[0].style.display = "none";
+    
+    }
+    function closeAlert() {
+        document.getElementById("alertBox").style.display = "none";
+        myform.style.display = "block";
+        formUpText[0].style.display = "block";
+
+    }
+    var name, email, text;
+    var myform = document.getElementById("my_form");
+    myform.addEventListener("submit", function (e) {
+        e.preventDefault();
+        nameUser = myform.elements.item(0).value;
+        emailUser = myform.elements.item(1).value;
+        textUser = myform.elements.item(2).value;
+        if (!validateEmail(emailUser)) {
+            alert("Please enter a valid email address. \n" + emailUser);
+            return;
+        }
+        bodytxt =
+            "Name: " +
+            `<b>${nameUser} </b>` +
+            "<br>" +
+            "\n\ Email: " +
+            `<b>${emailUser} </b>` +
+            "\n\ Message: " +
+            "<br>" +
+            `<b>${textUser} </b>`;
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "iminfo@integramagna.com",
+            Password: "F63AAC721194CFB801A7F3163DBC96920A2B",
+            To: "hi@integramagna.com",
+            From: "hi@integramagna.com",
+            Subject: "Enquiery - Integra Magna",
+            Port: 2525,
+            Body: bodytxt,
+        }).then((message) => showAlert());
+    });
+    function validateEmail(email) {
+        // Simple email validation, you may need to use a more comprehensive validation method
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+    // email validetion
+    function InvalidMsg(textbox) {
+        if (textbox.value === "") {
+            textbox.setCustomValidity("Entering an email-id is necessary!");
+        } else if (textbox.validity.typeMismatch) {
+            textbox.setCustomValidity(
+                "Please enter an email address which is valid!"
+            );
+        } else {
+            textbox.setCustomValidity("");
+        }
+        return true;
+    }
+
+
+
+</script>
+
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100vw;
+      }
+      .Quirky_Family_container {
+        font-family: "Campton";
+        color: black;
+        padding: 20px 115px;
+        /* height: fit-content; */
+        /* background-color: red; */
+      }
+      .Quirky_Family_container_heading h1 {
+        font-size: 64px;
+        font-weight: 500;
+      }
+
+      .Quirky_Family_image_contaner {
+        width: 300%;
+        /* position: relative; */
+        margin-top: 5vw;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 30px;
+      }
+     
+      .Quirky_image_container {
+        display: flex;
+        width: 600px !important;
+        aspect-ratio: 1/1;
+      }
+      .Quirky_image_container img {
+        width: 100%;
+        /* height: 100%; */
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height: 100vh"></div>
+    <div class="Quirky_Family_container">
+      <div class="Quirky_Family_container_heading">
+        <h1>The Quirky Family We Chose</h1>
+      </div>
+      <div class="Quirky_Family_image_contaner">
+        
+          <div class="Quirky_image_container">
+            <img
+              src="https://optim.tildacdn.net/tild3837-3561-4436-b965-303434653464/-/cover/720x690/center/center/-/format/webp/3_1.png"
+              alt=""
+            />
+          </div>
+          <div class="Quirky_image_container">
+            <img
+              src="https://optim.tildacdn.net/tild3737-6462-4262-a133-666435363733/-/format/webp/6.png"
+              alt=""
+            />
+          </div>
+          <div class="Quirky_image_container">
+            <img
+              src="https://static.tildacdn.net/tild3764-3935-4763-b161-363435353737/2.png"
+              alt=""
+            />
+          </div>
+          <div class="Quirky_image_container">
+            <img
+              src="https://static.tildacdn.net/tild3833-3165-4166-a132-616632323262/1.png"
+              alt=""
+            />
+          </div>
+          <div class="Quirky_image_container">
+            <img
+              src="https://static.tildacdn.net/tild6162-3363-4463-b839-396339623435/4_1.png"
+              alt=""
+            />
+          </div>
+       
+      </div>
+    </div>
+    <div style="height: 100vh"></div>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
+    <script src="https://assets.codepen.io/16327/ScrollTrigger.min.js"></script>
+    <script src="https://codepen.io/GreenSock/pen/7ba936b34824fefdccfe2c6d9f0b740b.js"></script>
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+let sections = gsap.utils.toArray(".Quirky_image_container");
+
+gsap.to(sections, {
+  xPercent: -100 * (sections.length - 1),
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".Quirky_Family_image_contaner",
+    pin: true,
+    scrub: 1,
+    snap: 1 / (sections.length - 1),
+    end: () => "+=" + document.querySelector(".Quirky_Family_image_contaner").offsetWidth
+  }
+});
+
+    </script>
+  </body>
+</html>

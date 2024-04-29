@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Splide｜Horizontal Slider With Mouse Stalker </title>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> -->
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css'>
+<!-- <link rel="stylesheet" href="./style.css"> -->
+<!-- <link rel="stylesheet" href="/style.css"> -->
+<style>
+  /*--------------------------------------------
+ Setting
+---------------------------------------------*/
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap"); */
+@-webkit-keyframes slideIn {
+  0% {
+    transform: translateY(0%) translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-50%) translateX(-50%);
+    opacity: 1;
+  }
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(0%) translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-50%) translateX(-50%);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes wave {
+  0% {
+    width: 6.4rem;
+    height: 6.4rem;
+    opacity: 1;
+  }
+  100% {
+    width: 8.4rem;
+    height: 8.4rem;
+    opacity: 0;
+  }
+}
+@keyframes wave {
+  0% {
+    width: 6.4rem;
+    height: 6.4rem;
+    opacity: 1;
+  }
+  100% {
+    width: 8.4rem;
+    height: 8.4rem;
+    opacity: 0;
+  }
+}
+/*--------------------------------------------
+Interface
+---------------------------------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* font-size: calc(100 / 412 * 10vw); */
+}
+@media screen and (min-width: 768px) {
+  html {
+    /* font-size: calc(100 / 768 * 10vw); */
+  }
+}
+@media screen and (min-width: 1280px) {
+  html {
+    /* font-size: 62.5%; */
+  }
+}
+
+body {
+  font-family: Campton;
+
+  font-weight: 500;
+  color: #000;
+  /* text-rendering: optimizeLegibility; */
+  /* font-feature-settings: "palt" 1; */
+}
+
+/*--------------------------------------------
+header
+---------------------------------------------*/
+.header {
+  border-bottom: 1px solid rgba(31, 31, 31, 0.2);
+}
+.header__inner {
+  height: 12rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+}
+.header__logo-text {
+  font-size: 4rem;
+  font-weight: 900;
+  text-decoration: none;
+  display: block;
+  text-decoration: none;
+  color: #000;
+  transition: 0.5s cubic-bezier(0.43, 0.05, 0.17, 1);
+}
+.header__logo-text:hover {
+  color: #853175;
+}
+.header__back {
+  font-size: 1.6rem;
+  width: 12rem;
+  height: 4.2rem;
+  color: white;
+  background-color: #853175;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  display: flex;
+  text-decoration: none;
+  transition: 0.5s cubic-bezier(0.43, 0.05, 0.17, 1);
+}
+.header__back:hover {
+  background-color: #a36498;
+}
+
+/*--------------------------------------------
+ slide
+---------------------------------------------*/
+.splide {
+  padding: 4rem;
+}
+.splide__wrapper {
+  position: relative;
+  transition: 0.5s;
+}
+.--prev .splide__wrapper {
+  transform: translateX(2rem);
+}
+.--next .splide__wrapper {
+  transform: translateX(-2rem);
+}
+.splide__link {
+  letter-spacing: 0.1em;
+  width: 100%;
+  height: auto;
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+.splide__img {
+  margin-bottom: 1rem;
+}
+.splide__img img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.splide__date {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.splide__ttl {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.splide__arrow {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  font-size: 0;
+  transform: translateY(0);
+}
+.splide__arrow--prev {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media screen and (min-width: 768px) {
+  .splide__arrow--prev {
+    width: calc(calc(36rem * (768 / 1024)) / 2);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .splide__arrow--prev {
+    width: calc(36rem / 2);
+  }
+}
+.splide__arrow--next {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+@media screen and (min-width: 768px) {
+  .splide__arrow--next {
+    width: calc(calc(36rem * (768 / 1024)) / 2);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .splide__arrow--next {
+    width: calc(36rem / 2);
+  }
+}
+
+/*--------------------------------------------
+ mouse stalker
+---------------------------------------------*/
+.stalker {
+  pointer-events: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 0px;
+  height: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: transform 0.2s, top, 0.5s, left 0.5s, width 0.5s, height 0.5s, background-color 0.5s;
+  transition-timing-function: ease-out;
+  z-index: 1000;
+}
+.stalker:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 50%;
+}
+.stalker.js-click:before {
+  -webkit-animation: wave 0.5s cubic-bezier(0, 0.2, 0.8, 1);
+          animation: wave 0.5s cubic-bezier(0, 0.2, 0.8, 1);
+}
+.stalker.js-next {
+  top: -3.2rem;
+  left: -3.2rem;
+  width: 6.4rem;
+  height: 6.4rem;
+  background: rgba(0, 0, 0, 0.75);
+}
+.stalker.js-next:after {
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  content: "next";
+  color: #fff;
+  -webkit-animation: slideIn 1s cubic-bezier(0.19, 1, 0.22, 1) both 0.3s;
+          animation: slideIn 1s cubic-bezier(0.19, 1, 0.22, 1) both 0.3s;
+}
+.stalker.js-prev {
+  top: -3.2rem;
+  left: -3.2rem;
+  width: 6.4rem;
+  height: 6.4rem;
+  background: rgba(0, 0, 0, 0.75);
+}
+.stalker.js-prev:after {
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  content: "prev";
+  color: #ffffff;
+  -webkit-animation: slideIn 1s cubic-bezier(0.19, 1, 0.22, 1) both 0.3s;
+          animation: slideIn 1s cubic-bezier(0.19, 1, 0.22, 1) both 0.3s;
+}
+.stalker.js-stalker-hover-blend-color {
+  top: -3.2rem;
+  left: -3.2rem;
+  width: 6.4rem;
+  height: 6.4rem;
+  background: white;
+  mix-blend-mode: difference;
+}
+
+
+
+/* my code */
+.testinomial_text{
+  font-size: 36px;
+  color: black;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+#client_name{
+  font-size: 24px;
+  color: #888888;
+}
+.logobox{
+  width: 120px;
+  height: 120px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.testimonial_image_section{
+  display: flex;
+ align-items: center;
+  gap: 20px;
+  color: #888888;
+  line-height: normal;
+  font-size: 32px;
+  font-weight: 500;
+
+}
+#testinomial_dsc{
+font-size: 24px;
+}
+
+.splide__slide{
+  color: black;
+  text-align: left;
+  border: 1px  solid black;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.splide__slide img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 400ms;
+  transform: scale(0.9);
+  /* transform-origin: center center; */
+}
+
+</style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- header -->
+<!-- <section style="height: 90vh; background-color: #bfbeaa;"></section> -->
+
+<div class="top"></div>
+<!-- mouse stalker -->
+<div id="js-stalker" class="stalker"></div>
+
+<!-- slider -->
+<div id="splide" class="splide">
+  <div class="splide__wrapper">
+    <div class="splide__track">
+      <div id="js-stalker-hover-blend-color" class="splide__list js-staler-hover">
+        <div class="splide__slide">
+          <h2 class="testinomial_text">
+            <span id="client_name">Ketan </span>said I M always have the
+            fundamentals covered. They start painting the canvas only after
+            understanding their customer’s customers. Further, the team has
+            built deep capabilities across all dimensions of brand
+            communication, staying speed with the evolving channels.
+          </h2>
+          <div class="testimonial_image_section">
+            <div class="logobox">
+              <img
+                src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Landing-Page/Testimony/Prestige+Logo.png"
+                alt=""
+              />
+            </div>
+            <p>
+              David williams <br />
+              <span id="testinomial_dsc">Marketing Head at Decathlon</span>
+            </p>
+          </div>
+        </div>
+        <div class="splide__slide">
+          <h2 class="testinomial_text">
+            <span id="client_name">Ketan </span>said I M always have the
+            fundamentals covered. They start painting the canvas only after
+            understanding their customer’s customers. Further, the team has
+            built deep capabilities across all dimensions of brand
+            communication, staying speed with the evolving channels.
+          </h2>
+          <div class="testimonial_image_section">
+            <div class="logobox">
+              <img
+                src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Landing-Page/Testimony/Prestige+Logo.png"
+                alt=""
+              />
+            </div>
+            <p>
+              David williams <br />
+              <span id="testinomial_dsc">Marketing Head at Decathlon</span>
+            </p>
+          </div>
+        </div>
+        <div class="splide__slide">
+          <h2 class="testinomial_text">
+            <span id="client_name">Ketan </span>said I M always have the
+            fundamentals covered. They start painting the canvas only after
+            understanding their customer’s customers. Further, the team has
+            built deep capabilities across all dimensions of brand
+            communication, staying speed with the evolving channels.
+          </h2>
+          <div class="testimonial_image_section">
+            <div class="logobox">
+              <img
+                src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Landing-Page/Testimony/Prestige+Logo.png"
+                alt=""
+              />
+            </div>
+            <p>
+              David williams <br />
+              <span id="testinomial_dsc">Marketing Head at Decathlon</span>
+            </p>
+          </div>
+        </div>
+        <div class="splide__slide">
+          <h2 class="testinomial_text">
+            <span id="client_name">Ketan </span>said I M always have the
+            fundamentals covered. They start painting the canvas only after
+            understanding their customer’s customers. Further, the team has
+            built deep capabilities across all dimensions of brand
+            communication, staying speed with the evolving channels.
+          </h2>
+          <div class="testimonial_image_section">
+            <div class="logobox">
+              <img
+                src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Landing-Page/Testimony/Prestige+Logo.png"
+                alt=""
+              />
+            </div>
+            <p>
+              David williams <br />
+              <span id="testinomial_dsc">Marketing Head at Decathlon</span>
+            </p>
+          </div>
+        </div>
+        <div class="splide__slide">
+          <h2 class="testinomial_text">
+            <span id="client_name">Ketan </span>said I M always have the
+            fundamentals covered. They start painting the canvas only after
+            understanding their customer’s customers. Further, the team has
+            built deep capabilities across all dimensions of brand
+            communication, staying speed with the evolving channels.
+          </h2>
+          <div class="testimonial_image_section">
+            <div class="logobox">
+              <img
+                src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Landing-Page/Testimony/Prestige+Logo.png"
+                alt=""
+              />
+            </div>
+            <p>
+              David williams <br />
+              <span id="testinomial_dsc">Marketing Head at Decathlon</span>
+            </p>
+          </div>
+        </div>
+        <div class="splide__slide">
+          <h2 class="testinomial_text">
+            <span id="client_name">Ketan </span>said I M always have the
+            fundamentals covered. They start painting the canvas only after
+            understanding their customer’s customers. Further, the team has
+            built deep capabilities across all dimensions of brand
+            communication, staying speed with the evolving channels.
+          </h2>
+          <div class="testimonial_image_section">
+            <div class="logobox">
+              <img
+                src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Landing-Page/Testimony/Prestige+Logo.png"
+                alt=""
+              />
+            </div>
+            <p>
+              David williams <br />
+              <span id="testinomial_dsc">Marketing Head at Decathlon</span>
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="splide__arrows">
+      <button id="js-prev" class="splide__arrow splide__arrow--prev js-staler-hover">
+        Prev
+      </button>
+      <button id="js-next" class="splide__arrow splide__arrow--next js-staler-hover">
+        Next
+      </button>
+    </div>
+  </div>
+</div>
+<!-- <section style="height: 90vh; background-color: #bfbeaa;"></section> -->
+
+<!-- partial -->
+  <script src='https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js'>
+  </script>
+  <!-- <script  src="./script.js"></script> -->
+<script>
+  // Slider
+class Slider {
+  constructor(slider, prev, next) {
+    this.slider = slider;
+    this.prev = prev;
+    this.next = next;
+    this._initSlider();
+  }
+
+  _initSlider() {
+    const slider = document.querySelector(this.slider);
+    const prev = document.querySelector(this.prev);
+    const next = document.querySelector(this.next);
+
+    // Existence checks
+    if (slider && prev && next) {
+      prev.addEventListener("mouseover", function () {
+        slider.classList.add("--prev");
+
+      });
+
+      prev.addEventListener("mouseleave", function () {
+        slider.classList.remove("--prev");
+      });
+
+      next.addEventListener("mouseover", function () {
+        slider.classList.add("--next");
+      });
+
+      next.addEventListener("mouseleave", function () {
+        slider.classList.remove("--next");
+      });
+
+      const mySplide = new Splide(slider, {
+        type: "loop",
+        speed: 250,
+        pagination: false,
+        perMove: 1,
+        fixedWidth: "400px",
+        gap: 16,
+        mediaQuery: "min",
+        breakpoints: {
+          320: {
+            fixedWidth: "640px",
+            gap: 32 } } });
+
+
+
+      mySplide.mount();
+    }
+  }}
+
+
+// Mousestalker
+class MouseStalker {
+  constructor(stalker, hover) {
+    this.stalkerItem = stalker;
+    this.hoverItems = hover;
+    this._mouseStalkerInit();
+  }
+
+  _mouseStalkerInit() {
+    const stalkerItem = document.querySelector(this.stalkerItem);
+    const hoverItems = document.querySelectorAll(this.hoverItems);
+
+    // Existence checks
+    if (stalkerItem && !hoverItems.length == 0) {
+      for (let i = 0; i < hoverItems.length; i++) {
+        hoverItems[i].addEventListener("mouseover", function () {
+          stalkerItem.classList.add(hoverItems[i].getAttribute("id"));
+        });
+        hoverItems[i].addEventListener("mouseout", function () {
+          stalkerItem.classList.remove(hoverItems[i].getAttribute("id"));
+        });
+        hoverItems[i].addEventListener("click", function () {
+          stalkerItem.classList.add("js-click");
+          setTimeout(function () {
+            stalkerItem.classList.remove("js-click");
+          }, 500);
+        });
+      }
+
+      // Process to follow the mouse.
+      document.addEventListener("mousemove", function (e) {
+        stalkerItem.style.transform =
+        "translate(" + e.clientX + "px, " + e.clientY + "px)";
+      });
+    }
+  }}
+
+
+// Main
+class Main {
+  constructor() {
+    this._init();
+  }
+
+  _init() {
+    new Slider("#splide", "#js-prev", "#js-next");
+    new MouseStalker("#js-stalker", ".js-staler-hover");
+  }}
+
+
+// DOMContentLoaded event fires when DOM parsing is finished
+document.addEventListener(
+"DOMContentLoaded",
+() => {
+  const main = new Main();
+},
+false);
+</script>
+</body>
+</html>

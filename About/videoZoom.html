@@ -1,0 +1,209 @@
+<style>
+   
+
+    .about-us-gallary-grid {
+        align-content: stretch;
+        bottom: 100%;
+        display: grid;
+        gap: 200px;
+        grid-template-columns: repeat(3, 1fr);
+        height: 300vh;
+        left: 50%;
+        position: absolute;
+        top: -23%;
+        transform: translate(-50%) scale(.3333333);
+        transform-origin: top center;
+        width: calc(300vw + 600px);
+    }
+
+    .about-us-gallary-grid>div {
+        height: 100%;
+        position: relative;
+    }
+
+
+    .about-us-gallary-container {
+         
+        background: #000;
+        height: 100vh;
+        position: relative;
+    }
+
+    .about-us-gallary-section {
+         margin-top: -100vh; 
+        position: relative;
+        width: 100vw;
+        overflow: hidden;
+        z-index: -10;
+    }
+
+    .about-us-grid-section {
+        height: 100vh;
+    
+    }
+
+    .about-us-gallary-section-up {
+        position: relative;
+        height: 100vh;
+        margin-bottom: -100vh;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .about-us-column {
+        display: grid;
+        gap: 200px;
+        grid-auto-rows: max-content;
+        width: 100%;
+
+    }
+    .about-us-column img{
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+    }
+    .vertical-move-column{
+        transform: translate(0,0);
+    }
+
+    .grid-objects {
+        object-fit: cover;
+        width: 100%;
+        overflow: hidden;
+    }
+    .grid-video{
+        transform: scale(3);
+
+    }
+    .anim-video_media{
+        overflow: hidden;
+    }
+
+    .anim-video_media video {
+        width: 100%;
+    }
+
+    .random {
+        height: 100vh;
+        background-color: blue;
+    }
+
+    .random1 {
+        height: 100vh;
+        background-color: green;
+    }
+    .full-page-video-section{
+        width: 100vw;
+        overflow: hidden;
+    }
+    .full-page-video{
+        width: 100%;
+    }
+    .full-page-video-section{
+        display: none;
+    }
+    @media screen and (min-width: 320px) and (max-width: 960px){
+        .full-page-video-section{
+            display: inline;
+
+        }
+        .about-us-gallary-section{
+            display: none;
+        }
+    }
+
+</style>
+
+
+<!-- for laptop view  -->
+<section class="about-us-gallary-section">
+    
+    <div class="about-us-grid-section">
+        <div class="about-us-gallary-container">
+            <div class="about-us-gallary-grid">
+                <div>
+                    <div class="about-us-column vertical-move-column">
+                        <img src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/About/Video-grid/Image+grid+2.webp"
+                            class="grid-objects">
+                        <img src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/About/Video-grid/Image+grid+3.webp"
+                            class="grid-objects">
+
+                    </div>
+                </div>
+
+                <div>
+                    <div class="about-us-column">
+                        <img src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/About/Video-grid/Image+grid+5.webp"
+                            class="grid-objects">
+                        <div class="anim-video_media" width="1600" height="1080"><!--[-->
+                            <video playsinline="" loop="" muted="" autoplay="" preload="metadata"
+                                aria-label="video-player" class="grid-objects grid-video">
+                                <source
+                                    src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/About/About+us+team+work+video.webm"
+                                    type="video/mp4">
+                            </video><!--]-->
+                        </div>
+
+                        <img src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/About/Video-grid/Image+grid+1.webp"
+                            class="grid-objects">
+
+                    </div>
+                </div>
+
+                <div>
+                    <div class="about-us-column vertical-move-column">
+                        <img src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/About/Video-grid/Image+grid+4.webp"
+                            class="grid-objects">
+                        <img src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/About/Video-grid/Image+grid+6.webp"
+                            class="grid-objects">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- for mobile rcreen -->
+
+
+<section class="full-page-video-section">
+    <div class="full-page-video-container">
+        <video playsinline="" loop="" muted="" autoplay="" preload="metadata" aria-label="video-player"
+            class="full-page-video lazy">
+            <source
+                src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/About/About+us+team+work+video.webm"
+                type="video/mp4">
+        </video><!--]-->
+    </div>
+</section>
+<!-- all script links -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+<script>
+
+    const sectionS = document.getElementsByClassName("about-us-gallary-section");
+    const winHeight = window.innerHeight;
+    const ele = document.getElementsByClassName("about-us-gallary-grid");
+    sectionS[0].style.marginTop = -winHeight + " !important";
+
+    
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".about-us-grid-section",
+            start: "top top",
+            end: "250%",
+            onUpdate: self => fix(self.progress),
+            scrub: 1,
+            pin: true
+        }
+    });
+
+
+    function fix(progression) {
+       
+    }
+    tl.to(".about-us-gallary-container", { scale: 2 })
+    .to(".grid-video",{scale:1},0)
+    .to(".vertical-move-column",{y:800},0);
+
+</script>

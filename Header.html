@@ -1,0 +1,485 @@
+<style>
+
+:root {
+  --fs-164: clamp(2.81rem, 7.44vi + 1.33rem, 10.25rem);
+  --fs-64: clamp(1.88rem, 2.13vi + 1.45rem, 4rem);
+  --fs-36: clamp(1.25rem, 1vi + 1.05rem, 2.25rem);
+  --fs-32: clamp(1rem, 1vi + 0.8rem, 2rem);
+  --fs-24: clamp(1rem, 0.5vi + 0.9rem, 1.5rem);
+  --fs-20: clamp(1rem, 0.25vi + 0.95rem, 1.25rem);
+  --fs-16: clamp(0.75rem, 0.25vi + 0.7rem, 1rem);
+}
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+
+    .no-scroll {
+        overflow: hidden;
+    }
+
+    .header-logo {
+        width: 160px;
+    }
+
+    #allrecords ul,
+    .t-records ul {
+        padding: 0px !important;
+    }
+
+    .header {
+        /* padding: 0 115px; */
+        font-family: Campton;
+        position: fixed;
+        width: 100%;
+        z-index: 99999;
+    }
+
+    .header-scroll-up {
+        position: relative;
+        transition: transform 0.4s ease-in-out;
+        top: 0%;
+    }
+
+    .header-container {
+        display: flex;
+        /* grid-template-columns: 10% auto 10%; */
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 115px;
+    }
+
+    .header-section:nth-child(1) {
+        width: 20%;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .header-section:nth-child(2) {
+        width: 60%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .header-section:nth-child(3) {
+        width: 20%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .navlinks {
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(25px);
+        border-radius: 8px;
+        color: black;
+        aspect-ratio: 573 / 58;
+        width: 573px;
+        /* height: 58px; */
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: url(https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Nav-bar-outline.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    
+
+    .navlinks li {
+        display: inline-block;
+      
+        align-items: center;
+    }
+
+    .nav-item>a,
+    .Contact-link,
+    .menuButton>a,
+    .openButton>a {
+        font-size: var(--fs-20);
+        font-weight: 500;
+        text-decoration: none;
+        color: black !important;
+    }
+
+    .Contact-link {
+        text-decoration: underline !important;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 999;
+        background-color: rgba(255, 255, 255, 0.6);
+        -webkit-backdrop-filter: blur(25px);
+        backdrop-filter: blur(25px);
+        z-index: 98;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate3d(0, -100%, 0);
+        transition: transform 1s ease-in-out;
+    }
+
+    .sidebar_bg {
+        position: absolute;
+        left: -2vh;
+        top: -2vh;
+        width: 110vw;
+        height: 110vh;
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+    }
+
+    .sidebar-container {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 70px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      
+    }
+
+    .sidebar-upper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 999;
+        position: fixed;
+        overflow: hidden;
+        height: 45px;
+        width: calc(100% - 40px);
+    }
+
+    .mobile-logo>img {
+        width: 115px;
+    }
+
+    .sidebar-navlinks {
+        margin-top: 200px;
+        list-style: none;
+        height: 60%;
+    
+    }
+
+    .sidebar-navlinks>.nav-item>a {
+        font-size: var(--fs-64);
+
+    }
+
+    .animation-wheel {
+        bottom: -60px;
+        animation: rotate 4s infinite linear;
+        transition: bottom 1s ease-in-out;
+        
+    }
+
+    .openButton {
+        display: grid;
+        height: 45px;
+      
+        transform: translateY(-45px);
+        justify-content: center;
+        align-items: center;
+        transition: transform 1s ease-in-out;
+
+    }
+
+    .txtbtm {
+        height: 45px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu_button_container {
+        font-size: var(--fs-20);
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Responsive styles for screen size 320px - 640px */
+    @media screen and (min-width: 320px) and (max-width: 640px) {
+
+        
+
+        .header-container {
+            padding: 30px 20px;
+        }
+
+        .header-section:nth-child(3) {
+            display: none;
+        }
+    }
+
+    /* Responsive styles for screen size 640px - 1200px */
+    @media screen and (min-width: 640px) and (max-width: 1200px) {
+
+        .nav-item>a,
+        .Contact-link,
+        .menuButton>a,
+        .openButton>a {
+
+
+           
+            font-weight: 500;
+            text-decoration: none;
+            color: black !important;
+            /* border-bottom: 1px solid black; */
+        }
+
+        .header-container {
+            padding: 30px 60px;
+        }
+
+        .navlinks {
+            width: 473px;
+        }
+    }
+
+    
+    @media screen and (min-width: 320px) and (max-width: 960px) {
+        .header-logo {
+        width: 110px;
+    }
+        .sidebar {
+            /* display: flex; */
+        }
+
+        .header-phone {
+            font-family: campton;
+            padding: 30px 20px;
+            position: fixed;
+            z-index: 9999;
+        }
+
+        .header {
+            display: none;
+        }
+
+        .nav-item {
+            overflow: hidden;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-media {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            
+            font-weight: 500;
+
+        }
+
+        .navlinks {
+            display: none;
+            border: none;
+            background: none;
+            backdrop-filter: none;
+        }
+
+        .social-media-links {
+            list-style: none;
+            display: flex;
+            width: 200px;
+            
+            justify-content: space-around;
+            padding: 10px;
+            border-bottom: solid #d9d9d9 1px;
+           
+        }
+
+        .social-media-links li {
+            margin-right: 20px;
+        }
+
+        .social-media-links li a {
+            text-decoration: none;
+            color: black !important;
+        }
+
+        .CurserLogoAnimetion {
+         
+        }
+
+        .CurserLogoAnimetion>img {
+            position: absolute;
+            left: 75vw;
+            bottom: 0;
+            transition: transform 1s ease-in-out, bottom 1s ease-in-out;
+        }
+
+
+        .openButton>a {
+
+
+            
+            font-weight: 500;
+            text-decoration: none;
+            color: black !important;
+            border-bottom: 1px solid black;
+        }
+    }
+
+    /* Responsive styles for screen size 640px - 1200px */
+    @media screen and (min-width: 960px) {
+
+        .sidebar,
+        .menuButton,
+        .header-phone-container {
+            display: none !important;
+
+        }
+
+        .sidebar_bg {
+            display: none;
+        }
+    }
+</style>
+
+
+<div id="nave_bar">
+    <header class="header">
+        <div class="header-container">
+            <div class="header-section header-scroll-up">
+                <a href="/Home/index.html"><img
+                        src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Intergra-Magna-Logo.svg"
+                        alt="Integra Magna Logo" class="header-logo lazy" /></a>
+            </div>
+            <div class="header-section">
+                <nav class="nav-holder">
+                    <ul class="navlinks">
+                        <li class="nav-item"><a href="/work/Work.html">Work</a></li>
+                        <li class="nav-item"><a href="/Services/services.html">Services</a></li>
+                        <li class="nav-item"><a href="https://integramagna.com/thinking">Thinking</a></li>
+                        <li class="nav-item"><a href="/Carear/career.html">Career</a></li>
+                        <li class="nav-item"><a href="/About/About.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-section header-scroll-up">
+                <a href="/Contact/contact.htm" class="Contact-link">Contact</a>
+            </div>
+        </div>
+    </header>
+    <header class="header-phone">
+        <div class="header-phone-container">
+            <div class="sidebar-upper">
+                <div class="mobile-logo">
+                    <a href="/Home/index.html"><img
+                            src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Intergra-Magna-Logo.svg"
+                            alt="Integra Magna Logo" class="header-logo" /></a>
+                </div>
+                <div class="openButton" onclick="closeSidebar()">
+                    <div class="txtbtm">
+                        <div class="menu_button_container">Close</div>
+                    </div>
+                    <div class="txtbtm">
+                        <div class="menu_button_container">Menu</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="sidebar">
+                <div class="sidebar-container">
+                    <div style="height: 60px;"></div>
+                    <ul class="sidebar-navlinks">
+                        <li class="nav-item"><a href="/work/work.js">Work</a></li>
+                        <li class="nav-item"><a href="/Services/services.html">Services</a></li>
+                        <li class="nav-item"><a href="https://integramagna.com/thinking">Thinking</a></li>
+                        <li class="nav-item"><a href="/Carear/career.html">Career</a></li>
+                        <li class="nav-item"><a href="/About/About.html">About</a></li>
+                        <li class="nav-item"><a href="/Contact/contact.htm">Contact</a></li>
+                    </ul>
+                    <ul class="social-media-links">
+                        <li class="social-media"><a href="https://www.instagram.com/integra.magna/">in</a></li>
+                        <li class="social-media"><a href="https://www.facebook.com/Integra.Magna/">Fb</a></li>
+                        <li class="social-media"><a href="https://twitter.com/Integra_Magna/">X</a></li>
+                        <li class="social-media"><a href="https://www.behance.net/integra_magna/">Be</a></li>
+                    </ul>
+                    <div class="CurserLogoAnimetion">
+                        <img data-src="https://integramagna.s3.ap-south-1.amazonaws.com/Integra_Magna/Career/Integra-magna-community.svg"
+                            class="animation-wheel lazy" alt="">
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </header>
+    
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script>
+    let menuBtn = document.getElementsByClassName("openButton");
+    let sidebar = document.getElementsByClassName("sidebar")[0];
+    let links = document.getElementsByClassName(".sidebar-navlinks>.nav-item>a");
+    let aniamted_wheel = document.getElementsByClassName("animation-wheel")[0];
+    let open_Button = document.getElementsByClassName("openButton")[0];
+
+    let initialCount = 1;
+
+    let intentObserver = ScrollTrigger.observe({
+        type: "wheel,touch",
+        onUp: (self) => headerup(),
+        onDown: (self) => headerdown(),
+        wheelSpeed: -1,
+        tolerance: 10,
+        preventDefault: false,
+    });
+    const head_scroll_up =
+        document.getElementsByClassName("header-scroll-up");
+    function headerup() {
+        for (let i = 0; i < head_scroll_up.length; i++) {
+            head_scroll_up[i].style.transform = "translateY(-30vh)";
+        }
+        console.log();
+    };
+    function headerdown() {
+        for (let i = 0; i < head_scroll_up.length; i++) {
+            head_scroll_up[i].style.transform = "translateY(0)";
+        }
+    };
+
+    window.closeSidebar = function () {
+        if (initialCount == 1) {
+            gsap.fromTo(".sidebar-navlinks>.nav-item>a", { y: 100 }, { duration: .6, y: 0, stagger: .3 });
+            gsap.fromTo(".social-media-links>li>a", { x: -100 }, { duration: .6, x: 0, stagger: .3 });
+
+            sidebar.style.transform = "translate3d(0, 0, 0)";
+            aniamted_wheel.style.bottom = "-60px";
+            open_Button.style.transform = "translateY(0px)";
+            document.body.classList.add('no-scroll');
+            initialCount = 0;
+        } else {
+            sidebar.style.transform = "translate3d(0, -100%, 0)";
+            aniamted_wheel.style.bottom = "60px";
+            open_Button.style.transform = "translateY(-45px)";
+            document.body.classList.remove('no-scroll');
+            initialCount = 1;
+        }
+    };
+
+</script>
